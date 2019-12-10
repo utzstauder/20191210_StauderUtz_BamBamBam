@@ -40,8 +40,7 @@ public class BulletPool : MonoBehaviour
             }
         }
 
-        // TODO: add new object dynamically
-
-        return null;
+        // add new object dynamically
+        return AddObjectToPool();
     }
 }
