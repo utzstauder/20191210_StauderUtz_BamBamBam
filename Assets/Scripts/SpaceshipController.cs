@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class SpaceshipController : MonoBehaviour
+public class SpaceshipController : MonoBehaviour, IInputReceiver
 {
     Rigidbody rb;
 
@@ -10,15 +10,12 @@ public class SpaceshipController : MonoBehaviour
     public float thrusterForce = 10f;
     public float sidewaysThrusterForce = 1f;
 
+    public float HInput { set { hInput = value; } }
+    public float VInput { set { vInput = value; } }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-    }
-
-    private void Update()
-    {
-        hInput = Input.GetAxis("Horizontal");
-        vInput = Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate()
@@ -29,4 +26,6 @@ public class SpaceshipController : MonoBehaviour
         // ship rotation
         rb.AddTorque(transform.up * hInput * sidewaysThrusterForce, ForceMode.Acceleration);
     }
+
+    public void OnFireDown(){}
 }

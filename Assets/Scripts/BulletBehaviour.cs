@@ -4,15 +4,18 @@
 public class BulletBehaviour : MonoBehaviour
 {
     Rigidbody rb;
+    Collider[] colliders;
 
     public int damageAmount = 1;
 
-    public float initialSpeed = 10f;
+    public float initialVelocity = 10f;
     public float lifeTime = 10f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        colliders = GetComponentsInChildren<Collider>();
 
         // Quatsch
         for (int i = 0; i < 10000; i++)
@@ -25,7 +28,7 @@ public class BulletBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        IDamagable damageReceiver = collision.gameObject.GetComponent<IDamagable>();
+        IDamagable damageReceiver = collision.gameObject.GetComponentInParent<IDamagable>();
 
         if (damageReceiver != null)
         {
@@ -35,9 +38,15 @@ public class BulletBehaviour : MonoBehaviour
         DisableSelf();
     }
     
-    public void Init(Vector3 inheritedVelocity)
+    public void Fire(Vector3 inheritedVelocity, int layerId)
     {
-        rb.velocity = inheritedVelocity + transform.forward * initialSpeed;
+        rb.velocity = inheritedVelocity + transform.forward * initialVelocity;
+
+        // change bullet layer
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            colliders[i].gameObject.layer = layerId;
+        }
 
         Invoke("DisableSelf", lifeTime);
     }

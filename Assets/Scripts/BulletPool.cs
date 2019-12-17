@@ -31,8 +31,6 @@ public class BulletPool : MonoBehaviour
     /// <returns>A BulletBehaviour reference</returns>
     public BulletBehaviour GetObjectFromPool()
     {
-        if (objectList.Count < 1) return null;
-
         foreach (BulletBehaviour currentObject in objectList)
         {
             if (!currentObject.gameObject.activeSelf) {

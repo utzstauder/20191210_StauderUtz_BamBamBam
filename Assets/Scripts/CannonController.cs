@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 
-public class CannonController : MonoBehaviour
+public class CannonController : MonoBehaviour, IInputReceiver
 {
     public BulletPool bulletPool;
     public Transform cannonTransform;
 
     public int bulletLayerId;
 
-    private void Update()
+    public float HInput { set { } }
+    public float VInput { set { } }
+
+    public void OnFireDown()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            Shoot();
-        }
+        Shoot();
     }
 
     void Shoot()
@@ -21,15 +21,7 @@ public class CannonController : MonoBehaviour
         newBullet.transform.SetPositionAndRotation(cannonTransform.position, cannonTransform.rotation);
 
         // TODO: apply ship velocity to bullet?
-        newBullet.Init(Vector3.zero);
-
-        // change bullet layer
-        // TODO: optimize
-        Collider[] colliders = newBullet.GetComponentsInChildren<Collider>();
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            colliders[i].gameObject.layer = bulletLayerId;
-        }
+        newBullet.Fire(Vector3.zero, bulletLayerId);
 
         newBullet.gameObject.SetActive(true);
     }
