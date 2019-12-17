@@ -23,13 +23,6 @@ public class BulletBehaviour : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        rb.velocity = transform.forward * initialSpeed;
-
-        Invoke("DisableSelf", lifeTime);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         IDamagable damageReceiver = collision.gameObject.GetComponent<IDamagable>();
@@ -40,6 +33,13 @@ public class BulletBehaviour : MonoBehaviour
         }
 
         DisableSelf();
+    }
+    
+    public void Init(Vector3 inheritedVelocity)
+    {
+        rb.velocity = inheritedVelocity + transform.forward * initialSpeed;
+
+        Invoke("DisableSelf", lifeTime);
     }
 
     void DisableSelf()

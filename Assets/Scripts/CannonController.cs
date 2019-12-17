@@ -17,8 +17,11 @@ public class CannonController : MonoBehaviour
 
     void Shoot()
     {
-        GameObject newBullet = bulletPool.GetObjectFromPool();
+        BulletBehaviour newBullet = bulletPool.GetObjectFromPool();
         newBullet.transform.SetPositionAndRotation(cannonTransform.position, cannonTransform.rotation);
+
+        // TODO: apply ship velocity to bullet?
+        newBullet.Init(Vector3.zero);
 
         // change bullet layer
         // TODO: optimize
@@ -28,8 +31,6 @@ public class CannonController : MonoBehaviour
             colliders[i].gameObject.layer = bulletLayerId;
         }
 
-        newBullet.SetActive(true);
-
-        // TODO: apply ship velocity to bullet?
+        newBullet.gameObject.SetActive(true);
     }
 }
