@@ -5,6 +5,8 @@ public class BulletBehaviour : MonoBehaviour
 {
     Rigidbody rb;
 
+    public int damageAmount = 1;
+
     public float initialSpeed = 10f;
     public float lifeTime = 10f;
 
@@ -26,6 +28,18 @@ public class BulletBehaviour : MonoBehaviour
         rb.velocity = transform.forward * initialSpeed;
 
         Invoke("DisableSelf", lifeTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        IDamagable damageReceiver = collision.gameObject.GetComponent<IDamagable>();
+
+        if (damageReceiver != null)
+        {
+            damageReceiver.DoDamage(damageAmount);
+        }
+
+        DisableSelf();
     }
 
     void DisableSelf()

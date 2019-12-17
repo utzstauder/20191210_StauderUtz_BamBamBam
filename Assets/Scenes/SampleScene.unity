@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 567677210}
   - component: {fileID: 567677209}
   - component: {fileID: 567677208}
+  - component: {fileID: 567677211}
   - component: {fileID: 567677207}
   m_Layer: 0
   m_Name: Sphere
@@ -211,6 +212,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &567677211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567677206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbc7a9bb186bc3459e9e97c87637f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHp: 1
 --- !u!1 &586877877
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +236,7 @@ GameObject:
   - component: {fileID: 586877881}
   - component: {fileID: 586877880}
   - component: {fileID: 586877879}
+  - component: {fileID: 586877882}
   - component: {fileID: 586877878}
   m_Layer: 8
   m_Name: Sphere (2)
@@ -302,6 +317,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &586877882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586877877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbc7a9bb186bc3459e9e97c87637f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHp: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +659,7 @@ GameObject:
   - component: {fileID: 1792178084}
   - component: {fileID: 1792178083}
   - component: {fileID: 1792178082}
+  - component: {fileID: 1792178085}
   - component: {fileID: 1792178081}
   m_Layer: 0
   m_Name: Sphere (1)
@@ -711,6 +740,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792178085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792178080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbc7a9bb186bc3459e9e97c87637f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHp: 2
 --- !u!1001 &3708592964117800516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,16 +841,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6375352492162835765, guid: b8b529737672a694ebb90f67eccccd03,
-        type: 3}
-      propertyPath: bulletLayer.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375352492162835765, guid: b8b529737672a694ebb90f67eccccd03,
-        type: 3}
-      propertyPath: bulletPool
-      value: 
-      objectReference: {fileID: 3708592964117800517}
     - target: {fileID: 5404059758445072491, guid: b8b529737672a694ebb90f67eccccd03,
         type: 3}
       propertyPath: m_Name
@@ -873,6 +905,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375352492162835765, guid: b8b529737672a694ebb90f67eccccd03,
+        type: 3}
+      propertyPath: bulletLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375352492162835765, guid: b8b529737672a694ebb90f67eccccd03,
+        type: 3}
+      propertyPath: bulletPool
+      value: 
+      objectReference: {fileID: 3708592964117800517}
+    - target: {fileID: 558625334605912964, guid: b8b529737672a694ebb90f67eccccd03,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8b529737672a694ebb90f67eccccd03, type: 3}
