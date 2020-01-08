@@ -7,8 +7,10 @@ public class SpaceshipController : MonoBehaviour, IInputReceiver
 
     float hInput, vInput;
 
-    public float thrusterForce = 10f;
-    public float sidewaysThrusterForce = 1f;
+    public SpaceshipData data;
+
+    public float ThrusterForce { get { return data.Acceleration; } }
+    public float SidewaysThrusterForce { get { return data.RotationForce; } }
 
     public float HInput { set { hInput = value; } }
     public float VInput { set { vInput = value; } }
@@ -16,15 +18,22 @@ public class SpaceshipController : MonoBehaviour, IInputReceiver
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        if (data == null)
+        {
+            data = new SpaceshipData();
+        }
+
+        data.OutputData();
     }
 
     private void FixedUpdate()
     {
         // ship acceleration
-        rb.AddForce(transform.forward * vInput * thrusterForce, ForceMode.Acceleration);
+        rb.AddForce(transform.forward * vInput * ThrusterForce, ForceMode.Acceleration);
 
         // ship rotation
-        rb.AddTorque(transform.up * hInput * sidewaysThrusterForce, ForceMode.Acceleration);
+        rb.AddTorque(transform.up * hInput * SidewaysThrusterForce, ForceMode.Acceleration);
     }
 
     public void OnFireDown(){}

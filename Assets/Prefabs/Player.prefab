@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e927a79d1794848aa7cd95a7ca131b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 0156729d9e0d4694fb3fe076fb4f60e0, type: 2}
   thrusterForce: 10
   sidewaysThrusterForce: 10
 --- !u!114 &6375352492162835765
