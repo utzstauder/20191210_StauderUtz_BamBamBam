@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d361fc4d78c5df8459d58fe7a5857295, type: 3}
-  m_Name: EnemyShipData_TypeA
+  m_Script: {fileID: 11500000, guid: c2ddd69a8c920b343a9b810684daac87, type: 3}
+  m_Name: EnemyTurretData_TypeB
   m_EditorClassIdentifier: 
-  acceleration: 5
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  scanDistance: 10
+  coolDown: 1.5

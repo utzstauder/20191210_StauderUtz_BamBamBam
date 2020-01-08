@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d361fc4d78c5df8459d58fe7a5857295, type: 3}
-  m_Name: EnemyShipData_TypeB
+  m_Name: EnemyTurretShipData_TypeB
   m_EditorClassIdentifier: 
-  acceleration: 8
+  acceleration: 0
+  rotationForce: 8

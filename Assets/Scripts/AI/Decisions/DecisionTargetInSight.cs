@@ -7,7 +7,18 @@ public class DecisionTargetInSight : Decision
 {
     public override bool Decide(StateController controller)
     {
-        // TODO: scan for targets
+        // scan for targets
+        if (Physics.Raycast(
+                origin: controller.transform.position,
+                direction: controller.transform.forward,
+                hitInfo: out RaycastHit hitInfo,
+                maxDistance: controller.data.scanDistance,
+                layerMask: controller.data.targetLayerMask,
+                queryTriggerInteraction: QueryTriggerInteraction.Ignore)
+            )
+        {
+            return true;
+        }
 
         return false;
     }
