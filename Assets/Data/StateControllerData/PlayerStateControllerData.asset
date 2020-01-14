@@ -16,4 +16,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   scanDistance: 10
-  coolDown: 1.5
+  coolDown: 0.1

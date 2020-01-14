@@ -8,7 +8,8 @@ public class ActionAccelerateToWaypoint : Action
     public override void Act(StateController controller)
     {
         float currentDistanceToWaypoint = Vector3.Distance(controller.transform.position, controller.CurrentWaypoint.position);
-        
+        bool arrivedAtWaypoint = false;
+
         for (int i = 0; i < controller.InputReceivers.Length; i++)
         {
             if (currentDistanceToWaypoint > controller.WaypointDistanceThreshold)
@@ -17,8 +18,13 @@ public class ActionAccelerateToWaypoint : Action
             } else
             {
                 controller.InputReceivers[i].VInput = 0;
-                controller.CurrentWaypointIndex++;
+                arrivedAtWaypoint = true;
             }
+        }
+
+        if (arrivedAtWaypoint)
+        {
+            controller.CurrentWaypointIndex++;
         }
     }
 }

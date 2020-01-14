@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d361fc4d78c5df8459d58fe7a5857295, type: 3}
   m_Name: PlayerShipData
   m_EditorClassIdentifier: 
-  acceleration: 50
+  acceleration: 25
   rotationForce: 10

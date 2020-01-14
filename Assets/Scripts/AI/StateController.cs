@@ -82,7 +82,7 @@ public class StateController : MonoBehaviour
         timer = 0;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         if (waypoints == null) return;
         Gizmos.color = Color.red;
@@ -97,9 +97,7 @@ public class StateController : MonoBehaviour
                 Gizmos.DrawLine(waypoints[i].position, waypoints[i + 1].position);
             }
 
-            //Color newColor = Gizmos.color;
-            //newColor.a -= (float)i * ( 1f / waypoints.Length);
-            //Gizmos.color = newColor;
+            Gizmos.DrawWireSphere(waypoints[i].position, WaypointDistanceThreshold);
         }
     }
 }
