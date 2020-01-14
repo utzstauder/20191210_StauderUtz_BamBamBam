@@ -10,6 +10,38 @@ public class StateController : MonoBehaviour
     IInputReceiver[] inputReceivers;
     public IInputReceiver[] InputReceivers => inputReceivers;
 
+    [SerializeField] Transform[] waypoints;
+    public Transform[] Waypoints => waypoints;
+
+    int currentWaypointIndex = 0;
+    public int CurrentWaypointIndex
+    {
+        get => currentWaypointIndex;
+        set
+        {
+            currentWaypointIndex = value;
+
+            if (Waypoints == null) return;
+
+            // wrap negative range
+            while (currentWaypointIndex < 0)
+            {
+                currentWaypointIndex += Waypoints.Length;
+            }
+            
+            // wrap positive range
+            while (currentWaypointIndex >= Waypoints.Length)
+            {
+                currentWaypointIndex -= Waypoints.Length;
+            }
+        }
+    }
+    public Transform CurrentWaypoint => waypoints[currentWaypointIndex];
+
+    [SerializeField]
+    private float waypointDistanceThreshold = 1f;
+    public float WaypointDistanceThreshold => waypointDistanceThreshold;
+
     public State currentState;
     public StateControllerData data;
 
@@ -48,5 +80,26 @@ public class StateController : MonoBehaviour
     public void ResetTimer()
     {
         timer = 0;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (waypoints == null) return;
+        Gizmos.color = Color.red;
+
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            if (i == waypoints.Length - 1)
+            {
+                Gizmos.DrawLine(waypoints[i].position, waypoints[0].position);
+            } else
+            {
+                Gizmos.DrawLine(waypoints[i].position, waypoints[i + 1].position);
+            }
+
+            //Color newColor = Gizmos.color;
+            //newColor.a -= (float)i * ( 1f / waypoints.Length);
+            //Gizmos.color = newColor;
+        }
     }
 }
